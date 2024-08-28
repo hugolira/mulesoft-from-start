@@ -61,7 +61,9 @@ jobs:
           run: |
             artifactName=$(ls *.jar | head -1)
             mvn deploy -DskipMunitTests -DmuleDeploy \
-             -Dmule.artifact=$artifactName \
+            -Dmule.artifact=$artifactName \
+            -Danypoint.username="$USERNAME" \
+            -Danypoint.password="$PASSWORD"
             -Dconnectap.client.id="883f56c72ecb493b89f50557f28701da" \
             -Dconnectap.client.secret="F51EAa6F323f4b5693857FD428c021a8"
             -Dap.client.id="5782c3cb5af8418580ac881bc38f73da" \
