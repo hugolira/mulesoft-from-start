@@ -4,7 +4,7 @@
 
 	<groupId>28f03ff6-f64d-4428-8298-734522f58178</groupId>
 	<artifactId>maxines-blog</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<packaging>mule-application</packaging>
 
 	<name>maxines-blog</name>
@@ -33,9 +33,28 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
-				<configuration>
-					<classifier>---- select project type ----</classifier>
-				</configuration>
+				  <!-- Deployment config start -->
+				  <configuration>
+				    <cloudHubDeployment>
+				      <uri>https://anypoint.mulesoft.com</uri>
+				      <muleVersion>4.4.0</muleVersion>
+				      <applicationName>maxines-blog</applicationName>
+				      <environment>Sandbox</environment>
+				      <workerType>MICRO</workerType>
+				      <region>us-east-2</region>
+				      <workers>1</workers>
+				      <objectStoreV2>true</objectStoreV2>
+				      <connectedAppClientId>${client.id}</connectedAppClientId>
+				      <connectedAppClientSecret>${client.secret}</connectedAppClientSecret>
+				      <connectedAppGrantType>client_credentials</connectedAppGrantType>
+				      <properties>
+				        <env>${env}</env>
+				        <anypoint.platform.client_id>${ap.client.id}</anypoint.platform.client_id>
+				        <anypoint.platform.client_secret>${ap.client.secret}</anypoint.platform.client_secret>
+				      </properties>
+				    </cloudHubDeployment>
+				  </configuration>
+				  <!-- Deployment config end -->
 			</plugin>
 		</plugins>
 	</build>
